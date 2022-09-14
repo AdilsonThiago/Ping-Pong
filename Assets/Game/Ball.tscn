@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Game/Ball.gd" type="Script" id=1]
+
+[sub_resource type="PhysicsMaterial" id=3]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="SphereShape" id=4]
+
+[sub_resource type="SpatialMaterial" id=5]
+metallic = 0.8
+roughness = 0.1
+
+[sub_resource type="SphereMesh" id=6]
+material = SubResource( 5 )
+
+[node name="RigidBody" type="RigidBody" groups=["ball"]]
+mode = 2
+mass = 2.0
+physics_material_override = SubResource( 3 )
+gravity_scale = 0.0
+contacts_reported = 2
+contact_monitor = true
+axis_lock_linear_y = true
+script = ExtResource( 1 )
+acum_speed = 0.75
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 6 )
+
+[connection signal="body_entered" from="." to="." method="_on_RigidBody_body_entered"]
