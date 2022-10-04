@@ -17,4 +17,5 @@ func _on_Energy_body_entered(body):
 		HUD.remove_item(self)
 		$AnimationPlayer.play("get")
 		active = false
+	$AudioStreamPlayer3D.play()
 	pass

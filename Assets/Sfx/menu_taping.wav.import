@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/menu_taping.wav-99a03cea591c26d38ed3df49e069492a.sample"
+
+[deps]
+
+source_file="res://Assets/Sfx/menu_taping.wav"
+dest_files=[ "res://.import/menu_taping.wav-99a03cea591c26d38ed3df49e069492a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

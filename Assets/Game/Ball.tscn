@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Game/Ball.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sfx/ionhit.wav" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Sfx/plasmahit.wav" type="AudioStream" id=3]
 
 [sub_resource type="PhysicsMaterial" id=3]
 friction = 0.0
@@ -16,20 +18,29 @@ roughness = 0.1
 material = SubResource( 5 )
 
 [node name="RigidBody" type="RigidBody" groups=["ball"]]
-mode = 2
+process_priority = 1
 mass = 2.0
 physics_material_override = SubResource( 3 )
 gravity_scale = 0.0
 contacts_reported = 2
 contact_monitor = true
+can_sleep = false
 axis_lock_linear_y = true
 script = ExtResource( 1 )
-acum_speed = 0.75
+acum_speed = 1.5
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = SubResource( 6 )
+
+[node name="Ricoch" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 2 )
+unit_size = 15.0
+
+[node name="Ricoch2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_size = 15.0
 
 [connection signal="body_entered" from="." to="." method="_on_RigidBody_body_entered"]

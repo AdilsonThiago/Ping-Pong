@@ -6,28 +6,40 @@ var speed : float = 8
 var reset : bool = false
 var delay : float = 0
 var side = 0
+var multiplayer_running = false
+var custom_pos = Vector3(0, -1, 0)
 export(float) var acum_speed = 2
 signal score
 
 func _ready():
 	#Inicio de jogo, lançar a bolinha
+	multiplayer_running = Networking._is_running_multiplayer()
 	trown()
 	pass
 
 func _process(delta):
-	if delay > 0:
-		#Contador usado por conta de ser demorado a atualização de posição pelo método "_integrate_forces"
-		delay -= delta
-	elif abs(translation.z) > 25:
-		if not reset:
-			if translation.z > 0:
-				emit_signal("score", 0)
-			else:
-				emit_signal("score", 1)
-			delay = 1
-			side = 0
-		reset = true
-		trown()
+	if not multiplayer_running or is_network_master():
+		if delay > 0:
+			#Contador usado por conta de ser demorado a atualização de posição pelo método "_integrate_forces"
+			delay -= delta
+		elif abs(translation.z) > 25:
+			if not reset:
+				if translation.z > 0:
+					emit_signal("score", 0)
+				else:
+					emit_signal("score", 1)
+				delay = 1
+				side = 0
+			reset = true
+			trown()
+		if multiplayer_running:
+			rpc_unreliable("update_data", translation, linear_velocity)
+	pass
+
+remote func update_data(pos, ln_vel):
+	reset = true
+	custom_pos = pos
+	linear_velocity = ln_vel
 	pass
 
 func trown():
@@ -46,6 +58,9 @@ func _on_RigidBody_body_entered(body):
 		#Para dificultar o jogo aplico uma aceleração pequena nesse evento.
 		change_speed(acum_speed, true)
 		side = body.side
+		$Ricoch.play()
+	else:
+		$Ricoch2.play()
 	pass
 
 func change_speed(value, relative):
@@ -77,7 +92,8 @@ func _integrate_forces(state):
 	#Os nodes de física não permitem alterar a posição. Ao invéz disso nós usamos esse método
 	if reset:
 		var xy = state.get_transform()
-		xy.origin = Vector3(0, -1, 0)
+		xy.origin = custom_pos
 		state.set_transform(xy)
 		reset = false
+		custom_pos = Vector3(0, -1, 0)
 	pass

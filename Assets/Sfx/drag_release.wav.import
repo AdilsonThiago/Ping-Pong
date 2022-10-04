@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/drag_release.wav-a62f0d87af62ae13ac973f72b52c375c.sample"
+
+[deps]
+
+source_file="res://Assets/Sfx/drag_release.wav"
+dest_files=[ "res://.import/drag_release.wav-a62f0d87af62ae13ac973f72b52c375c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

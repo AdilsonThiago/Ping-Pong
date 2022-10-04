@@ -11,10 +11,10 @@ script = ExtResource( 2 )
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -66.0
-margin_top = -20.0
-margin_right = 276.0
-margin_bottom = 148.0
+margin_left = -64.0
+margin_top = -25.0
+margin_right = 278.0
+margin_bottom = 143.0
 rect_scale = Vector2( 0.85, 0.85 )
 texture = ExtResource( 1 )
 expand = true
@@ -25,11 +25,23 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -362.0
-margin_top = -151.0
+margin_top = -223.0
 margin_right = -229.0
-margin_bottom = -131.0
+margin_bottom = -203.0
 rect_scale = Vector2( 2.5, 2.5 )
 text = "Start"
+
+[node name="MultiplayerLan" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -360.0
+margin_top = -150.0
+margin_right = -227.0
+margin_bottom = -130.0
+rect_scale = Vector2( 2.5, 2.5 )
+text = "Multiplayer Lan"
 
 [node name="QuitButton" type="Button" parent="."]
 anchor_left = 1.0
@@ -43,5 +55,61 @@ margin_bottom = -55.9999
 rect_scale = Vector2( 2.5, 2.5 )
 text = "Exit"
 
+[node name="Panel" type="Panel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -301.0
+margin_top = -128.0
+margin_right = 109.0
+margin_bottom = 60.0
+rect_scale = Vector2( 1.5, 1.5 )
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 24.0
+margin_top = 69.0
+margin_right = 196.0
+margin_bottom = 93.0
+text = "IP address:"
+align = 2
+valign = 1
+
+[node name="LineEdit" type="LineEdit" parent="Panel"]
+margin_left = 214.0
+margin_top = 69.0
+margin_right = 386.0
+margin_bottom = 93.0
+text = "127.0.0.1"
+align = 1
+placeholder_text = "127.0.0.1"
+
+[node name="Create" type="Button" parent="Panel"]
+margin_left = 24.0
+margin_top = 132.0
+margin_right = 196.0
+margin_bottom = 167.0
+text = "Create"
+
+[node name="Connect" type="Button" parent="Panel"]
+margin_left = 214.0
+margin_top = 132.0
+margin_right = 386.0
+margin_bottom = 167.0
+text = "Connect"
+
+[node name="Close" type="Button" parent="Panel"]
+margin_left = 362.667
+margin_top = 12.0
+margin_right = 397.667
+margin_bottom = 41.0
+text = "X"
+icon_align = 1
+
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="MultiplayerLan" to="." method="_on_MultiplayerLan_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="Panel/Create" to="." method="_on_Create_pressed"]
+[connection signal="pressed" from="Panel/Connect" to="." method="_on_Connect_pressed"]
+[connection signal="pressed" from="Panel/Close" to="." method="_on_Close_pressed"]

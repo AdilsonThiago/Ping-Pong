@@ -14,9 +14,9 @@ config/name="Ping- Pong"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
-[display]
+[autoload]
 
-window/size/fullscreen=true
+Networking="*res://Assets/networking.gd"
 
 [gui]
 
@@ -43,6 +43,9 @@ b_escape={
 [physics]
 
 common/enable_pause_aware_picking=true
+3d/default_gravity_vector=Vector3( 0, 0, 0 )
+3d/default_linear_damp=0.0
+3d/default_angular_damp=0.0
 
 [rendering]
 

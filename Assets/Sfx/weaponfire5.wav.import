@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/weaponfire5.wav-dea279564e1544d1ba0c5e45e4559abd.sample"
+
+[deps]
+
+source_file="res://Assets/Sfx/weaponfire5.wav"
+dest_files=[ "res://.import/weaponfire5.wav-dea279564e1544d1ba0c5e45e4559abd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
